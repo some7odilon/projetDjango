@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+
+    <title>Cooperative</title>
+
+    <style>
+      body {
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      footer {
+        background-color: rgba(0, 0, 0, 0.7);
+        margin-top: auto; /* Pousse le footer vers le bas */
+        padding: 1rem 0;
+      }
+      .content-container {
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 50px;
+      }
+      .login-image {
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow">
+      <div class="container">
+        <a class="navbar-brand" href="#">AgriculturalCoop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Accueil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5 mb-5">
+      <div class="row mt-5 mb-5 shadow">
+        <div class="col-lg-6 shadow p-4">
+          <h3 class="text-danger">Inscription</h3>
+          <form method="POST">
+            {% csrf_token %} {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+            {% endif %}
+            <div class="mb-3 text-dark">
+              <label for="nom" class="form-label">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                name="nom"
+                value="{{ form.nom.value|default:'' }}"
+                required
+              />
+              {% if form.nom.errors %}
+              <div class="text-danger">{{ form.nom.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="prenom" class="form-label">Prénom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="prenom"
+                name="prenom"
+                value="{{ form.prenom.value|default:'' }}"
+                required
+              />
+              {% if form.prenom.errors %}
+              <div class="text-danger">{{ form.prenom.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="role" class="form-label">Rôle</label>
+              <select class="form-control" id="role" name="role" required>
+                <option value="">Sélectionnez un rôle</option>
+                <option value="membre">Membre</option>
+                <option value="admin">Administrateur</option>
+                <option value="formateur">Formateur</option>
+              </select>
+              {% if form.role.errors %}
+              <div class="text-danger">{{ form.role.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="age" class="form-label">Âge</label>
+              <input
+                type="number"
+                class="form-control"
+                id="age"
+                name="age"
+                value="{{ form.age.value|default:'' }}"
+                required
+              />
+              {% if form.age.errors %}
+              <div class="text-danger">{{ form.age.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="typeCulture" class="form-label"
+                >Type de culture</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="typeCulture"
+                name="type_culture"
+                value="{{ form.type_culture.value|default:'' }}"
+                required
+              />
+              {% if form.type_culture.errors %}
+              <div class="text-danger">{{ form.type_culture.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="email" class="form-label">Adresse Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                value="{{ form.email.value|default:'' }}"
+                required
+              />
+              {% if form.email.errors %}
+              <div class="text-danger">{{ form.email.errors }}</div>
+              {% endif %}
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="password" class="form-label">Mot de passe</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="mot_de_passe"
+                required
+              />
+            </div>
+            <div class="mb-3 text-dark">
+              <label for="passwordRepeat" class="form-label"
+                >Répéter le mot de passe</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="passwordRepeat"
+                name="password_repeat"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Inscrivez-Vous
+            </button>
+          </form>
+        </div>
+
+        <div class="col-lg-6">
+          <img
+            src="https://assets.weforum.org/article/image/BC6cHliMGBFhCWq26ZIuTc3_BSfGm9vl6QY7zOA09Gk.jpg"
+            alt=""
+            class="img-fluid login-image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark p-3">
+      <p class="text-center text-white">
+        Tous droits réservés, développé par @Odilon Some
+      </p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

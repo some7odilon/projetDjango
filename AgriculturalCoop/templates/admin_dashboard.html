@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tableau de bord - Administration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* Styles pour la sidebar */
+      .sidebar {
+        height: 100vh;
+        background-color: #343a40;
+        width: 250px;
+        position: fixed;
+      }
+
+      .sidebar a {
+        color: #fff;
+        padding: 15px;
+        display: block;
+        text-decoration: none;
+      }
+
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+
+      /* Style pour la photo de profil */
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 20px auto;
+        display: block;
+      }
+
+      /* Contenu principal */
+      .content {
+        margin-left: 250px;
+        padding: 20px;
+      }
+
+      /* Barre de navigation supérieure */
+      .navbar {
+        background-color: #343a40;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Barre de navigation supérieure -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Déconnexion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="d-flex">
+      <div class="sidebar bg-dark">
+        <!-- Photo de profil -->
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8D8DoWVAbIFpiQuSIyF6d3iLPpCHZ44R20Q&s"
+          alt="Photo de profil"
+          class="profile-pic"
+        />
+        <a href="#">Tableau de bord</a>
+        <a href="{% url 'gestion_membre' %}">Gestion des membres</a>
+        <a href="{% url 'gestion_produit'%}">Gestion des produits</a>
+        <a href="{% url 'gestion_commandes' %}">Commandes</a>
+        <a href="{% url 'rapport' %}">Rapports</a>
+        <a href="{% url 'suivi_production' %}">Suivi de la Production</a>
+      </div>
+
+      <!-- Contenu principal -->
+      <div class="content">
+        <h1>Bienvenue, Administrateur</h1>
+        <p>Ceci est votre tableau de bord d'administration.</p>
+
+        <!-- Cartes d'information -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-header">Membres</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ total_membres }}</h5>
+                <p class="card-text">Membres enregistrés.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+              <div class="card-header">Produits</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ total_produits }}</h5>
+                <p class="card-text">Produits disponibles.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-header">Commandes</div>
+              <div class="card-body">
+                <h5 class="card-title">{{ total_commandes }}</h5>
+                <p class="card-text">Commandes en attente.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau d'activités récentes -->
+        <h2 class="mt-5">Dernières activités</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nom</th>
+              <th>Action</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Jean Dupont</td>
+              <td>Ajouté un nouveau produit</td>
+              <td>30/09/2024</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Alice Durand</td>
+              <td>Mis à jour son profil</td>
+              <td>30/09/2024</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Marc Leclerc</td>
+              <td>Passé une commande</td>
+              <td>29/09/2024</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

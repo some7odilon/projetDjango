@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmation de Commande</title>
+    <!-- Lien vers Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .confirmation-container {
+        margin-top: 50px;
+        text-align: center;
+      }
+      .confirmation-header {
+        background-color: #ffc107; /* Couleur de fond jaune */
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .confirmation-header h3 {
+        margin: 0;
+        color: #343a40; /* Couleur du texte sombre */
+      }
+      .confirmation-message {
+        margin-top: 30px;
+        background-color: white; /* Couleur de fond blanche */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      .confirmation-message h4 {
+        color: #343a40; /* Couleur du texte sombre */
+      }
+      .back-button {
+        margin-top: 20px; /* Espacement au-dessus du bouton */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container confirmation-container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!-- En-tête de confirmation -->
+          <div class="confirmation-header">
+            <h3>Salut Mr/Mrs {{ name }}</h3>
+          </div>
+
+          <!-- Message de confirmation -->
+          <div class="confirmation-message">
+            <h4>Merci de nous faire confiance, {{ name }}!</h4>
+            <p>Nous avons bien reçu votre commande.</p>
+            <p>Vous serez livré dans un délai maximum de 5 jours.</p>
+            <a href="/" class="btn btn-primary back-button"
+              >Retour à l'accueil</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts Bootstrap (optionnels pour les interactions) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

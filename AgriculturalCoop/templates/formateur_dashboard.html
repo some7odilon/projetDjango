@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formateur Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      .dashboard-card {
+        border-radius: 10px;
+        transition: 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .dashboard-card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+      .icon {
+        font-size: 3rem;
+        color: #28a745;
+      }
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">AgriculturalCoop-Formateur</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'formations' %}">Formation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'marché' %}">Marché</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="container mt-5">
+      <div class="text-center mb-5">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYJUshzpqEimcLUELe3F5JcLStxmO-nmmMGQ&s"
+          alt="Photo de profil"
+          class="profile-pic"
+        />
+        <h2>Bienvenue, {{ formateur.nom }} {{ formateur.prenom }} !</h2>
+        <p class="lead">Votre tableau de bord de formateur</p>
+      </div>
+
+      <div class="row">
+        <!-- Gestion des Formations -->
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-4">
+            <div class="icon mb-3">
+              <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <h4 class="card-title">Gérer les Formations</h4>
+            <p class="card-text">
+              Gérez et suivez l'évolution des formations que vous dispensez.
+            </p>
+            <a href="#" class="btn btn-success">Accéder</a>
+          </div>
+        </div>
+
+        <!-- Créer une Nouvelle Formation -->
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-4">
+            <div class="icon mb-3">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+            <h4 class="card-title">Créer une Formation</h4>
+            <p class="card-text">
+              Ajoutez de nouvelles formations et contenus pédagogiques pour vos
+              apprenants.
+            </p>
+            <a href="#" class="btn btn-success">Créer</a>
+          </div>
+        </div>
+
+        <!-- Voir les Rapports -->
+        <div class="col-md-4">
+          <div class="card dashboard-card text-center p-4">
+            <div class="icon mb-3">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4 class="card-title">Consulter les Rapports</h4>
+            <p class="card-text">
+              Accédez aux rapports d'avancement des formations et des
+              apprenants.
+            </p>
+            <a href="#" class="btn btn-success">Consulter</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestion des Quiz -->
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card dashboard-card text-center p-4">
+            <div class="icon mb-3">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <h4 class="card-title">Gérer les Quiz</h4>
+            <p class="card-text">
+              Créez et gérez les quiz pour vos formations.
+            </p>
+            <a href="{% url 'gestion_quiz' %}" class="btn btn-success"
+              >Accéder</a
+            >
+          </div>
+        </div>
+
+        <!-- Gestion des Vidéos -->
+        <div class="col-md-6">
+          <div class="card dashboard-card text-center p-4">
+            <div class="icon mb-3">
+              <i class="fas fa-video"></i>
+            </div>
+            <h4 class="card-title">Gérer les Vidéos</h4>
+            <p class="card-text">
+              Ajoutez et gérez les vidéos pour vos sessions de formation.
+            </p>
+            <a href="{% url 'gestion_videos' %}" class="btn btn-success"
+              >Accéder</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark p-3 text-white text-center mt-5">
+      <p>Tous droits réservés, développé par @Odilon Some</p>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
